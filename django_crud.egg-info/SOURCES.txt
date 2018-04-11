@@ -1,0 +1,16 @@
+LICENSE
+MANIFEST.in
+README.rst
+setup.py
+crud/__init__.py
+crud/admin.py
+crud/apps.py
+crud/models.py
+crud/tests.py
+crud/utils.py
+crud/views.py
+crud/migrations/__init__.py
+django_crud.egg-info/PKG-INFO
+django_crud.egg-info/SOURCES.txt
+django_crud.egg-info/dependency_links.txt
+django_crud.egg-info/top_level.txt
