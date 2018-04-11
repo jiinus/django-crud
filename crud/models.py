@@ -108,6 +108,10 @@ class CRUModel(models.Model):
 	class Meta:
 		abstract = True
 
+class CRUDModelManager(models.Manager):
+	def get_queryset(self):
+		return super(CRUDModel, self).get_queryset().filter(is_deleted=False)
+
 class CRUDModel(CRUModel):
 	'''
 	An abstract base class to add UUID and created/modified/deleted fields
@@ -115,6 +119,9 @@ class CRUDModel(CRUModel):
 	is_deleted         = models.BooleanField(default=False, db_index=True)
 	deleted_at         = models.DateTimeField(null=True, default=None, blank=True)
 	deleted_by         = models.ForeignKey(django.conf.settings.AUTH_USER_MODEL, related_name='+', null=True, default=None, blank=True, on_delete=models.SET_NULL)
+
+	# Custom manager to filter out deleted objects
+	objects            = CRUDModelManager()
 
 	def _delete(self, *args, **kwargs):
 		super(CRUDModel, self).delete()
