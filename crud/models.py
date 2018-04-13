@@ -110,7 +110,7 @@ class CRUModel(models.Model):
 
 class CRUDModelManager(models.Manager):
 	def get_queryset(self):
-		return super(CRUDModel, self).get_queryset().filter(is_deleted=False)
+		return super(CRUDModelManager, self).get_queryset().filter(is_deleted=False)
 
 class CRUDModel(CRUModel):
 	'''
