@@ -112,6 +112,12 @@ class CRUDModelManager(models.Manager):
 	def get_queryset(self):
 		return super(CRUDModelManager, self).get_queryset().filter(is_deleted=False)
 
+	def deleted(self):
+		return super(CRUDModelManager, self).get_queryset().filter(is_deleted=True)
+
+	def available(self):
+		return super(CRUDModelManager, self).get_queryset()
+
 class CRUDModel(CRUModel):
 	'''
 	An abstract base class to add UUID and created/modified/deleted fields
