@@ -8,18 +8,6 @@ from datetime import datetime
 from django.db import models
 from django.utils import timezone
 
-# Get an instance of a logger
-logger = logging.getLogger(__name__)
-
-def serialize_user(self):
-	return {
-		'username': self.username,
-		'full_name': self.get_full_name(),
-		'first_name': self.first_name,
-		'last_name': self.last_name,
-	}
-django.contrib.auth.models.User.serialize = serialize_user
-
 class CRUModel(models.Model):
 	'''
 	An abstract base class to add UUID and created/modified fields
